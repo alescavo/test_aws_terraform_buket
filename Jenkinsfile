@@ -6,7 +6,7 @@ pipeline {
     }
 
     stages{
-        stage{
+        stage ('test'){
             sh 'dir'
         }
     }
