@@ -21,6 +21,7 @@ pipeline {
             '''
         }
     }
+    }
         stage ('apli'){
             steps{
                 powershell 'terraform apply -auto-approve tfplan'
