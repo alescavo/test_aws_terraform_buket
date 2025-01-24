@@ -13,7 +13,9 @@ pipeline {
         }
         stage ('plano'){
             steps{
-                powershell 'terraform plan -out=tfplan'
+                withCredentials([usernamePassword(credentialsId: 'aws-credentials', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                    powershell 'terraform plan -out=tfplan'
+                }
             }
         }
         stage ('apli'){
