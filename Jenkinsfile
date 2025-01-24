@@ -6,9 +6,19 @@ pipeline {
     }
 
     stages{
-        stage ('test'){
+        stage ('inito'){
             steps{
-                echo 'ciao'
+                sh 'terraform init'
+            }
+        }
+        stage ('plano'){
+            steps{
+                sh 'terraform plan -out=tfplan'
+            }
+        }
+        stage ('apli'){
+            steps{
+                sh 'terraform apply -auto-approve tfplan'
             }
         }
     }
