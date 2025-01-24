@@ -8,7 +8,7 @@ pipeline {
     stages{
         stage ('inito'){
             steps{
-                sh 'terraform init'
+                terraform init
             }
         }
         stage ('plano'){
