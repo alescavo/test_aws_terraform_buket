@@ -15,7 +15,7 @@ pipeline {
         }
         stage('plano') {
             steps {
-                withCredentials([aws(credentialsId: 'aws-credentials')]) {
+                withCredentials([aws(credentialsId: '903266019256')]) {
                     powershell '''
                     $env:TF_VAR_aws_access_key=$env:AWS_ACCESS_KEY_ID
                     $env:TF_VAR_aws_secret_key=$env:AWS_SECRET_ACCESS_KEY
@@ -26,7 +26,7 @@ pipeline {
         }
         stage('apli') {
             steps {
-                withCredentials([aws(credentialsId: 'aws-credentials')]) {
+                withCredentials([aws(credentialsId: '903266019256')]) {
                     powershell '''
                     $env:TF_VAR_aws_access_key=$env:AWS_ACCESS_KEY_ID
                     $env:TF_VAR_aws_secret_key=$env:AWS_SECRET_ACCESS_KEY
