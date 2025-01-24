@@ -8,17 +8,17 @@ pipeline {
     stages{
         stage ('inito'){
             steps{
-                terraform init
+                powershell 'terraform init'
             }
         }
         stage ('plano'){
             steps{
-                sh 'terraform plan -out=tfplan'
+                powershell 'terraform plan -out=tfplan'
             }
         }
         stage ('apli'){
             steps{
-                sh 'terraform apply -auto-approve tfplan'
+                powershell 'terraform apply -auto-approve tfplan'
             }
         }
     }
