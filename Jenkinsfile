@@ -18,7 +18,9 @@ pipeline {
         }
         stage ('apli'){
             steps{
-                powershell 'terraform apply -auto-approve tfplan'
+                withCredentials([usernamePassword(credentialsId: 'aws-credentials', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                    powershell 'terraform apply -auto-approve tfplan'
+                }
             }
         }
     }
