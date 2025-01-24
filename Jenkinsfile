@@ -12,10 +12,15 @@ pipeline {
             }
         }
         stage ('plano'){
-            steps{
-                powershell 'terraform plan -out=tfplan'
-            }
+    steps{
+        withCredentials([usernamePassword(credentialsId: 'aws-credentials', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+            powershell '''
+            $env:TF_VAR_aws_access_key=$env:AWS_ACCESS_KEY_ID
+            $env:TF_VAR_aws_secret_key=$env:AWS_SECRET_ACCESS_KEY
+            terraform plan -out=tfplan
+            '''
         }
+    }
         stage ('apli'){
             steps{
                 powershell 'terraform apply -auto-approve tfplan'
