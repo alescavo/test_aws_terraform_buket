@@ -6,7 +6,7 @@ provider "aws" {
 
 
 resource "aws_s3_bucket" "example" {
-  bucket = "example-bucket"
+  bucket = "example-buketino"
 }
 
 resource "aws_s3_bucket_acl" "example_acl" {
