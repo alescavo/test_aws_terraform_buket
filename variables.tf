@@ -10,6 +10,4 @@ variable "environment" {
 
 variable "aws_access_key" {}
 variable "aws_secret_key" {}
-variable "aws_region" {
-    name = "eu_central_1"
-}
+variable "aws_region" {}
